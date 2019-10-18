@@ -1,0 +1,94 @@
+models:
+  Error:
+    type: string
+    location: json
+
+  KeyValueTuple:
+    type: object
+    location: json
+    properties:
+      Key:
+        type: string
+        location: json
+      Value:
+        type: string
+        location: json
+
+  UtilityAddressMatch:
+    type: object
+    location: json
+    properties:
+      AddressDetails:
+        type: array
+        location: json
+        items:
+          "$ref": KeyValueTuple
+      UtilityType:
+        type: string
+        location: json
+      # Meters would go here, but I do not know what they are!
+
+  UtilityMatch:
+    type: object
+    location: json
+    properties:
+      UtilityDetails:
+        type: array
+        location: json
+        items:
+          "$ref": KeyValueTuple
+      UtilityKey:
+        type: string
+        location: json
+      UtilityType:
+        type: string
+        location: json
+      # Meters would go here, but I do not know what they are!
+
+  SearchUtilityAddressResponse:
+    type: object
+      location: json
+      properties:
+        Errors:
+          type: array
+          location: json
+          items:
+            "$ref": Error
+        ParameterSet:
+          type: object
+          location: json
+          properties:
+            Parameters:
+              type: array
+              location: json
+              items:
+                "$ref": KeyValueTuple
+        UtilityAddressMatches:
+          type: array
+          location: json
+          items:
+            "$ref": UtilityAddressMatch
+
+  GetTechnicalDetailsByMpanResponse:
+    type: object
+    location: json
+    properties:
+      Errors:
+        type: array
+        location: json
+        items:
+          "$ref": Error
+      ParameterSet:
+        type: object
+        location: json
+        properties:
+          Parameters:
+            type: array
+            location: json
+            items:
+              "$ref": KeyValueTuple
+      UtilityMatches:
+        type: array
+        location: json
+        items:
+          "$ref": UtilityMatch

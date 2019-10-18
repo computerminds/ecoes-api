@@ -1,0 +1,12 @@
+operations:
+  SearchUtilityAddress:
+    httpMethod: GET
+    uri: SearchUtilityAddress
+    summary: Get the technical details of an MPAN.
+    parameters:
+      Postcode:
+        type: string
+      permission:
+        type: boolean
+    responseModel: SearchUtilityAddressResponse
+

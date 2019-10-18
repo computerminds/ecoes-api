@@ -1,0 +1,12 @@
+operations:
+  GetTechnicalDetailsByMpan:
+    httpMethod: GET
+    uri: GetTechnicalDetailsByMpan
+    summary: Get the technical details of an MPAN.
+    parameters:
+      mpan:
+        type: string
+      permission:
+        type: boolean
+    responseModel: GetTechnicalDetailsByMpanResponse
+

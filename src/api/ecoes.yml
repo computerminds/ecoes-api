@@ -1,0 +1,6 @@
+name: "ECOES API"
+apiVersion: "2.0"
+description: "Client wrapper for the ECOES API."
+imports:
+  - "models.yml"
+  - "resources/GetTechnicalDetailsByMpan.yml"
