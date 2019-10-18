@@ -1,0 +1,20 @@
+{
+    "name": "computerminds/ecoes-api",
+    "description": "API client for the ECOES API.",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle-services": "^1.1.3"
+    },
+    "license": "GPLv2.0",
+    "authors": [
+        {
+            "name": "Steven Jones",
+            "email": "steven.jones@computerminds.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+           "ComputerMinds\\EDTF\\": "src/"
+        }
+    }
+}
