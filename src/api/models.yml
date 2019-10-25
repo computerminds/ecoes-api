@@ -25,8 +25,12 @@ models:
 
   # A model for errors from ECOES.
   Error:
-    type: string
-    location: json
+    type: object
+    properties:
+      Code:
+        type: string
+      Description:
+        type: string
 
   # ECOES loves a key-value tuple. Nothing is explicitly returned other than some of these tuples.
   KeyValueTuple:
