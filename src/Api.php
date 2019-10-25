@@ -3,7 +3,7 @@
 namespace Ecoes;
 
 use Guzzle\Service\Loader\YamlLoader;
-use GuzzleHttp\Command\ServiceClientInterface;
+use GuzzleHttp\ClientInterface;
 use Symfony\Component\Config\FileLocator;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Client;
@@ -27,7 +27,7 @@ class Api {
     }
   }
 
-  public static function getClient(ServiceClientInterface $guzzle_client = NULL) {
+  public static function getClient(ClientInterface $guzzle_client = NULL) {
     $configDirectories = array(__DIR__ . '/api');
     $locator = new FileLocator($configDirectories);
 
