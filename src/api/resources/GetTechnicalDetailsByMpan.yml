@@ -1,12 +1,75 @@
 operations:
   GetTechnicalDetailsByMpan:
-    httpMethod: GET
+    httpMethod: POST
     uri: GetTechnicalDetailsByMpan
     summary: Get the technical details of an MPAN.
     parameters:
-      mpan:
-        type: string
-      permission:
-        type: boolean
+      Authentication:
+        type: object
+        location: json
+        required: true
+        properties:
+          Key:
+            type: string
+            required: true
+      ParameterSets:
+        type: array
+        location: json
+        items:
+          "$ref": ParameterSet
     responseModel: GetTechnicalDetailsByMpanResponse
 
+models:
+  GetTechnicalDetailsByMpanResponse:
+    type: object
+    location: json
+    properties:
+      Header:
+        type: ResponseHeader
+      Results:
+        type: array
+        items:
+          "$ref": GetTechnicalDetailsByMpanResponseResult
+
+  GetTechnicalDetailsByMpanResponseResult:
+    type: object
+    properties:
+      Errors:
+        type: array
+        items:
+          "$ref": Error
+      UtilityMatches:
+        type: array
+        items:
+          "$ref": UtilityMatch
+      ParameterSet:
+        type: object
+        properties:
+          Parameters:
+            type: array
+            items:
+              "$ref": KeyValueTuple
+
+  UtilityMatch:
+    type: object
+    properties:
+      UtilityDetails:
+        type: array
+        items:
+          "$ref": KeyValueTuple
+      UtilityKey:
+        type: string
+      UtilityType:
+        type: string
+      Meters:
+        type: array
+        items:
+          "$ref": Meter
+
+  Meter:
+    type: object
+    properties:
+      MeterDetails:
+        type: array
+        items:
+          "$ref": KeyValueTuple

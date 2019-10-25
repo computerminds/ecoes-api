@@ -1,8 +1,34 @@
 models:
+
+  # The base model for sending Authentication.
+  Authentication:
+    type: object
+    location: json
+    properties:
+      Key:
+        type: string
+
+  # The base model for sending request parameters.
+  ParameterSets:
+    type: array
+    location: json
+    items:
+      "$ref": ParameterSet
+
+  ParameterSet:
+    type: object
+    properties:
+      Parameters:
+        type: array
+        items:
+          "$ref": KeyValueTuple
+
+  # A model for errors from ECOES.
   Error:
     type: string
     location: json
 
+  # ECOES loves a key-value tuple. Nothing is explicitly returned other than some of these tuples.
   KeyValueTuple:
     type: object
     location: json
@@ -11,84 +37,25 @@ models:
         type: string
         location: json
       Value:
-        type: string
+        type:
+          - string
+          - boolean
+          - int
         location: json
 
-  UtilityAddressMatch:
+  ResponseHeader:
     type: object
     location: json
     properties:
-      AddressDetails:
-        type: array
-        location: json
-        items:
-          "$ref": KeyValueTuple
-      UtilityType:
+      RequestDate:
         type: string
         location: json
-      # Meters would go here, but I do not know what they are!
-
-  UtilityMatch:
-    type: object
-    location: json
-    properties:
-      UtilityDetails:
-        type: array
+      RequestId:
+        type: int
         location: json
-        items:
-          "$ref": KeyValueTuple
-      UtilityKey:
+      ResponseTime:
+        type: float
+        location: json
+      VersionNumber:
         type: string
         location: json
-      UtilityType:
-        type: string
-        location: json
-      # Meters would go here, but I do not know what they are!
-
-  SearchUtilityAddressResponse:
-    type: object
-      location: json
-      properties:
-        Errors:
-          type: array
-          location: json
-          items:
-            "$ref": Error
-        ParameterSet:
-          type: object
-          location: json
-          properties:
-            Parameters:
-              type: array
-              location: json
-              items:
-                "$ref": KeyValueTuple
-        UtilityAddressMatches:
-          type: array
-          location: json
-          items:
-            "$ref": UtilityAddressMatch
-
-  GetTechnicalDetailsByMpanResponse:
-    type: object
-    location: json
-    properties:
-      Errors:
-        type: array
-        location: json
-        items:
-          "$ref": Error
-      ParameterSet:
-        type: object
-        location: json
-        properties:
-          Parameters:
-            type: array
-            location: json
-            items:
-              "$ref": KeyValueTuple
-      UtilityMatches:
-        type: array
-        location: json
-        items:
-          "$ref": UtilityMatch

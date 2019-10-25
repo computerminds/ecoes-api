@@ -1,6 +1,8 @@
 name: "ECOES API"
 apiVersion: "2.0"
 description: "Client wrapper for the ECOES API."
+baseUri: https://www.ecoes.co.uk/WebServices/Service/ECOESAPI.svc/RESTful/JSON/
 imports:
   - "models.yml"
   - "resources/GetTechnicalDetailsByMpan.yml"
+  - "resources/SearchUtilityAddress.yml"

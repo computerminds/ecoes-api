@@ -1,12 +1,61 @@
 operations:
   SearchUtilityAddress:
-    httpMethod: GET
+    httpMethod: POST
     uri: SearchUtilityAddress
-    summary: Get the technical details of an MPAN.
+    summary: Retrieves the Metering Point Address data matching the specified criteria.
     parameters:
-      Postcode:
-        type: string
-      permission:
-        type: boolean
+      Authentication:
+        type: object
+        location: json
+        required: true
+        properties:
+          Key:
+            type: string
+            required: true
+      ParameterSets:
+        type: array
+        location: json
+        items:
+          "$ref": ParameterSet
     responseModel: SearchUtilityAddressResponse
 
+models:
+  SearchUtilityAddressResponse:
+    type: object
+    location: json
+    properties:
+      Header:
+        type: ResponseHeader
+      Results:
+        type: array
+        items:
+          "$ref": SearchUtilityAddressResponseResult
+
+  SearchUtilityAddressResponseResult:
+    type: object
+    properties:
+      Errors:
+        type: array
+        items:
+          "$ref": Error
+      ParameterSet:
+        type: object
+        properties:
+          Parameters:
+            type: array
+            items:
+              "$ref": KeyValueTuple
+      UtilityAddressMatches:
+        type: array
+        items:
+          $ref: UtilityAddressMatch
+
+  UtilityAddressMatch:
+    type: object
+    properties:
+      AddressDetails:
+        type: array
+        items:
+          "$ref": KeyValueTuple
+      UtilityType:
+        type: string
