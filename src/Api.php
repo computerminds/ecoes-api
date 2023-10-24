@@ -2,6 +2,7 @@
 
 namespace Ecoes;
 
+use Guzzle\Service\Loader\YamlLoader;
 use GuzzleHttp\ClientInterface;
 use Symfony\Component\Config\FileLocator;
 use GuzzleHttp\Command\Guzzle\Description;
