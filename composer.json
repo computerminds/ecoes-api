@@ -2,9 +2,15 @@
     "name": "computerminds/ecoes-api",
     "description": "API client for the ECOES API.",
     "type": "library",
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/computerminds/guzzle-description-loader"
+      }
+    ],
     "require": {
         "guzzlehttp/guzzle-services": "^1.1.3",
-        "gimler/guzzle-description-loader": "^0.0.4"
+        "gimler/guzzle-description-loader": "dev-fb-update-symfony-packages"
     },
     "license": "MIT",
     "authors": [
